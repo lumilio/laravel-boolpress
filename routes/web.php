@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 
-Route::resource('products','ProductController')->only([
+Route::resource('products','Guest\ProductController')->only([
     'index',
     'show',
 ]);
