@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('guest.welcome');
 });
 
+
+Route::resource('products','ProductController')->only([
+    'index',
+    'show',
+]);
+
+
+
 Auth::routes();
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('auth')->group(function(){
