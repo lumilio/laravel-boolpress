@@ -19,30 +19,40 @@
     <!-- Styles -->
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 </head>
+
+
+
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
 
 
+                <!-------------------- Link Logo to initial page ---------------------->
+
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
 
-                
-                    <div class='ml-3'>{{ Auth::user()->name }}</div>
-                    <div class="" aria-labelledby="navbarDropdown">          
-                        <a class="m-3" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
+
+                <!------------------ Sezione per mostrare l'utente loggato -------------------->
+
+                <div class='ml-3'>Utente : {{ Auth::user()->name }}</div>
 
 
+                <!------------------- Logaout link -------------------->
+
+                <div class="" aria-labelledby="navbarDropdown">          
+                    <a class="m-3" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
+
+
             </div>
         </nav>
-
         <main class="py-4">
             @yield('content')
         </main>

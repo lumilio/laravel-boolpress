@@ -53768,7 +53768,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/lumilio/Desktop/laravel-boolpress-445f0c2460d4a37e60976d1ca74f1a02930d296f/resources/js/admin.js */"./resources/js/admin.js");
+module.exports = __webpack_require__(/*! /Users/lumilio/Desktop/laravel-boolpress-2/resources/js/admin.js */"./resources/js/admin.js");
 
 
 /***/ })

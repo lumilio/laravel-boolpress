@@ -53790,9 +53790,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/lumilio/Desktop/laravel-boolpress-445f0c2460d4a37e60976d1ca74f1a02930d296f/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Users/lumilio/Desktop/laravel-boolpress-445f0c2460d4a37e60976d1ca74f1a02930d296f/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Users/lumilio/Desktop/laravel-boolpress-445f0c2460d4a37e60976d1ca74f1a02930d296f/resources/sass/admin.scss */"./resources/sass/admin.scss");
+__webpack_require__(/*! /Users/lumilio/Desktop/laravel-boolpress-2/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/lumilio/Desktop/laravel-boolpress-2/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/lumilio/Desktop/laravel-boolpress-2/resources/sass/admin.scss */"./resources/sass/admin.scss");
 
 
 /***/ })
