@@ -17,16 +17,13 @@ Route::get('/', function () {
     return view('guest.welcome');
 });
 
-
-Route::resource('products','Guest\ProductController')->only([
-    'index',
-    'show',
-]);
-
-
-
 Auth::routes();
+
+Route::namespace('Guest')->prefix('guest')->name('guest.')->group(function(){
+    Route::resource('products','ProductController')->only(['index','show']);
+});
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('auth')->group(function(){
     Route::get('/', 'HomeController@index')->name('dashboard');
+    Route::resource('products','ProductController');
 });
