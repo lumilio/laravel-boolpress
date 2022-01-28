@@ -27,6 +27,10 @@
             </nav>
             <div class="container">
                 <div class="">
+                    <div style='position:relative; height:4rem;' class="container-fluid d-flex align-items-right">
+                        <a href=""><button style='position:absolute; right:0;' class='mb-2 mt-4 float-end"'><i class="fas fa-plus"></i> Add Item</button></a>
+                    </div>
+                    
                     <div class="">
                         <div class="card">
                             <div class="card-header">{{ __('Dashboard') }}</div>
