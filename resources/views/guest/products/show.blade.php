@@ -3,18 +3,15 @@
 @section('content')
 <div class=" container-fluid d-flex justify-content-center">
     <div class="container d-flex">
-        @forelse ($product_arrey as $item)
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="{{$item->image}}" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{{$item->name}}</h5>
-                <p class="card-text">{{$item->price}}€</p>
-                <a href="#" class="btn btn-primary">Vedi</a>
-            </div>
+        <div class='me-2'>
+            <img class='mb-2'src="{{$product->image}}" alt="">
+            <span >Disponibilità : {{$product->quantity}} pz</span>
         </div>
-        @empty
-            <p>no data</p>
-        @endforelse 
+        <div>
+            <h4>{{$product->name}}</h4>
+            <p>{{$product->price}}€</p>
+            <p>{{$product->description}}</p>
+        </div>
     </div>
 </div>
 @endsection
