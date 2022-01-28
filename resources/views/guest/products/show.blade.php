@@ -11,6 +11,9 @@
             <h4>{{$product->name}}</h4>
             <p>{{$product->price}}€</p>
             <p>{{$product->description}}</p>
+            @auth
+            <a href="{{route('admin.products.edit', $product->id)}}">modifica</a>
+            @endauth
         </div>
     </div>
 </div>

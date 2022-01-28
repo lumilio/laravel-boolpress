@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
@@ -41,7 +42,7 @@ class ProductController extends Controller
         //ddd($request->all());
         //validazione
         $validated = $request->validate([
-            'name'=>'required',
+            'name'=>['required','unique:products'],
             'image'=>'nullable',
             'price'=> 'nullable',
             'quantity'=> 'nullable',
@@ -72,7 +73,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
@@ -84,7 +85,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $validated = $request->validate([
+            'name'=>['required', Rule::unique('products')->ignore($product->id)],
+            'image'=>'nullable',
+            'price'=> 'nullable',
+            'quantity'=> 'nullable',
+            'description'=> 'nullable',
+        ]);
+        $product->update($validated);
+        return redirect()->route('guest.products.show', compact('product'));
     }
 
     /**

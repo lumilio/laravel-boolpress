@@ -26,7 +26,7 @@
                         <td>{{$item->quantity}}</td>
                         <td>
                             <a href="{{route('guest.products.show', $item->id)}}"><i class="far fa-eye mx-2"></i></a>
-                            <a href=""><i class="fas fa-edit mx-2"></i></a>
+                            <a href="{{route('admin.products.edit', $item->id)}}"><i class="fas fa-edit mx-2"></i></a>
                             <a href=""><i class="far text-danger fa-trash-alt mx-2"></i></a>
                         </td>
                     </tr>
