@@ -15,6 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 
     <!-- Styles -->
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
@@ -22,11 +23,12 @@
 
 
 
-
 <body>
     <div id="app">
-        <nav  class="navbar navbar-expand-md  navbar-light bg-white shadow-sm">
-            <div class="container d-flex flex-end">
+        <nav  class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="me-3" href="{{ url('/') }}"><i style='font-size:30px;' class="fas fa-home"></i></a>
+                <a class="text-black" href="{{route('guest.products.index')}}">Products</a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- left Side Of Navbar -->
                     <ul class="navbar-nav d-flex ms-auto">
@@ -35,13 +37,9 @@
                     <ul class="navbar-nav m-0 d-flex flex-end">
                             <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                             @endif
                         @else
                             <li class=" nav-item dropdown">
@@ -49,20 +47,17 @@
                                     {{ Auth::user()->name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item"href="{{ url('/admin') }}">My Admin</a>
+                                    <a class="dropdown-item" href="{{url('/')}}">Pagina vetrina Home</a>
+                                    <a class="dropdown-item" href="#">Modifica profilo admin</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    <form id="logout-form" action="{{route('logout')}}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                                    <a class="dropdown-item" href="{{url('/')}}">
-                                       Visualizzazione cliente
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                       Modifica profilo admin
-                                    </a>
                                 </div>
                             </li>
                         @endguest

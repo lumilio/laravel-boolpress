@@ -5,6 +5,13 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+
+
+.card{
+    margin: 10px 10px;
+    min-width: 60px;
+}
 
 
 

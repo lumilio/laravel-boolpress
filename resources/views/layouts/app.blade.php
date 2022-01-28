@@ -23,42 +23,33 @@
 
 
 
-
-
-
-
 <body>
     <div id="app">
         <nav  class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <i style='font-size:30px;' class="fas fa-home"></i>
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <a class="me-3" href="{{ url('/') }}"><i style='font-size:30px;' class="fas fa-home"></i></a>
+                <a class="text-black" href="{{route('guest.products.index')}}">Products</a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <!-- left Side Of Navbar -->
+                    <ul class="navbar-nav d-flex ms-auto">
                     </ul>
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto m-0 d-flex flex-end">
-                        <!-- Authentication Links -->
+                    <!-- right Side Of Navbar -->
+                    <ul class="navbar-nav m-0 d-flex flex-end">
+                            <!-- Authentication Links -->
                         @guest
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
+                            <li class=" nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item"href="{{ url('/admin') }}">My Admin</a>
+                                    <a class="dropdown-item" href="{{url('/')}}">Pagina vetrina Home</a>
+                                    <a class="dropdown-item" href="#">Modifica profilo admin</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
