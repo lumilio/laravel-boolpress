@@ -12,7 +12,7 @@
                     <label for="name" class="form-label">Name</label>
                     <input type="text" name='name' id='name' class='form-control' placeholder='Hp 454' aria-describedby='nameHelper' value="{{old('name')}}">
                     <small id="nameHelper" class="text-muted">Type a name for your product</small>
-                    @error('title')
+                    @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
@@ -20,7 +20,7 @@
                     <label for="image" class="form-label">Image</label>
                     <input type="text" name='image' id='image' class='form-control' placeholder='http://' aria-describedby='imageHelper' value="{{old('image')}}">
                     <small id="imageHelper" class="text-muted">insert image</small>
-                    @error('title')
+                    @error('image')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
@@ -28,7 +28,7 @@
                     <label for="price" class="form-label">price</label>
                     <input type="number" setp='0.01' name='price' id='price' class='form-control' aria-describedby='priceHelper' value="{{old('price')}}">
                     <small id="priceHelper" class="text-muted">insert price</small>
-                    @error('title')
+                    @error('price')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
@@ -36,14 +36,14 @@
                     <label for="quantity" class="form-label">quantity</label>
                     <input type="number" name='quantity' id='quantity' class='form-control' aria-describedby='quantityHelper' value="{{old('quantity')}}">
                     <small id="quantityHelper" class="text-muted">insert quantity</small>
-                    @error('title')
+                    @error('quantity')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class='mb-3'>
                     <label for="description" class="form-label">description</label>
                     <textarea class='form-control' name="description" id="description" rows="5" >{{old('description')}}</textarea>
-                    @error('title')
+                    @error('description')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>

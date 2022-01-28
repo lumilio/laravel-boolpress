@@ -93,7 +93,8 @@ class ProductController extends Controller
             'description'=> 'nullable',
         ]);
         $product->update($validated);
-        return redirect()->route('guest.products.show', compact('product'));
+        //return redirect()->route('guest.products.show', compact('product'));
+        return redirect()->route('admin.products.index');
     }
 
     /**
