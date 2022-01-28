@@ -5,7 +5,7 @@
     <div class="container">
         <div>
             <h1>create a new product</h1>
-            @include('partials.error')
+            @include('admin.products.partials.errorCreate')
             <form action="{{route('admin.products.store')}}" method="post">
             @csrf
                 <div class='mb-3'>
@@ -42,13 +42,13 @@
                 </div>
                 <div class='mb-3'>
                     <label for="description" class="form-label">description</label>
-                    <textarea class='form-control' name="description" id="description" rows="5" value="{{old('description')}}"></textarea>
+                    <textarea class='form-control' name="description" id="description" rows="5" >{{old('description')}}</textarea>
                     @error('title')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="container-fluid d-flex alig-items-right">
-                    <button type="submit" class="btn btn-success">Submit</button>
+                <div style='position:relative; height:4rem;' class="container-fluid d-flex alig-items-right">
+                    <button style='position:absolute; right:0;' type="submit" class="btn btn-success">Save</button>
                 </div>
             </form>
         </div>
