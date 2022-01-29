@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('admin.products.index')}}">
+                <a class="nav-link" href="{{route('admin.posts.index')}}">
                 <span data-feather="file"></span>
                             Posts
                 </a>

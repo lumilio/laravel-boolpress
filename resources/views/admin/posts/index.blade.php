@@ -9,7 +9,7 @@
                 {{ session('message') }}
             </div>
             @endif
-            <a href="{{route('admin.products.create')}}"><button style='position:absolute; right:0;' class='mb-2 mt-4 float-end"'><i class="fas fa-plus"></i> Add Item</button></a>
+            <a href="{{route('admin.posts.create')}}"><button style='position:absolute; right:0;' class='mb-2 mt-4 float-end"'><i class="fas fa-plus"></i> Add Item</button></a>
         </div>        
         <div class="card">
             <div class="card-header">{{ __('Dashboard') }}</div>
@@ -17,24 +17,21 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
+                        <th width="70%">Content</th>
+                        <th>Cover</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($product_arrey as $item)
+                    @forelse ($post_arrey as $item)
                     <tr>
                         <td scope="row">{{$item->id}}</td>
-                        <td><img width='100' src="{{$item->image}}" alt=""></td>
-                        <td>{{$item->name}}</td>
-                        <td>{{$item->price}}</td>
-                        <td>{{$item->quantity}}</td>
+                        <td>{{$item->description}}</td>
+                        <td><img width='100' src="{{$item->cover}}" alt=""></td>
+
                         <td>
-                            <a href="{{route('guest.products.show', $item->id)}}"><i class="far fa-eye mx-2"></i></a>
-                            <a href="{{route('admin.products.edit', $item->id)}}"><i class="fas fa-edit mx-2"></i></a>
+                            <a href="{{route('guest.posts.show', $item->id)}}"><i class="far fa-eye mx-2"></i></a>
+                            <a href="{{route('admin.posts.edit', $item->id)}}"><i class="fas fa-edit mx-2"></i></a>
 
 
                             <!-- Button trigger modal ------------------------->
@@ -56,7 +53,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                                            <form class="mx-2" method='post' action="{{route('admin.products.destroy', $item->id)}}">
+                                            <form class="mx-2" method='post' action="{{route('admin.posts.destroy', $item->id)}}">
                                                 @csrf 
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Do it!</i></button>
@@ -73,7 +70,7 @@
                     @endforelse
                 </tbody>
             </table>
-            {{$product_arrey->links()}}
+            {{$post_arrey->links()}}
         </div>
     </div>
 </div>

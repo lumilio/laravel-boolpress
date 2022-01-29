@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller 
 {
@@ -37,7 +38,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'cover'=>['required'],
+            'description'=> 'nullable',
+        ]);
+        Post::create($validated);
+        return redirect()->route('admin.posts.index');
     }
 
     /**
@@ -59,7 +65,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('posts'));
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -71,7 +77,13 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $validated = $request->validate([
+            'cover'=>['required'],
+            'description'=> 'nullable',
+        ]);
+        $post->update($validated);
+        //return redirect()->route('guest.products.show', compact('product'));
+        return redirect()->route('admin.posts.index')->with('message', "Il Post n.{$post->id} è stato modificato");;
     }
 
     /**
@@ -82,6 +94,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('admin.posts.index')->with('message', "Il post n.{$post->id} non è più nell'inventario");
     }
 }

@@ -95,7 +95,7 @@ class ProductController extends Controller
         ]);
         $product->update($validated);
         //return redirect()->route('guest.products.show', compact('product'));
-        return redirect()->route('admin.products.index')->with('message', "N.{$product->id} è stato modificato");;
+        return redirect()->route('admin.products.index')->with('message', "Il Prodotto n.{$product->id} è stato modificato");;
     }
 
     /**
@@ -107,6 +107,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('admin.products.index')->with('message', "N.{$product->id} non è più nell'inventario");
+        return redirect()->route('admin.products.index')->with('message', "Il Prodotto n.{$product->id} non è più nell'inventario");
     }
 }
