@@ -22,11 +22,20 @@
                             Products
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('admin.products.index')}}">
+                            <span data-feather="file"></span>
+                            Posts
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>
-            @include('admin.firstMessage')
+            @include('admin.partials.firstMessage')
         </div>
     </div>
 </div>
 @endsection
+
+
+

@@ -3,6 +3,7 @@
         <a class="me-3" href="{{ url('/') }}"><i style='font-size:30px;' class="fas fa-home"></i></a>
         <a class="text-black me-3" href="{{route('guest.products.index')}}">Products</a>
         <a class="text-black me-3" href="">Blog</a>
+        <a class="text-black me-3" href="">About us</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- left Side Of Navbar -->
             <ul class="navbar-nav d-flex ms-auto">
@@ -21,7 +22,7 @@
                             {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item"href="{{ url('/admin') }}">My Admin</a>
+                            <a class="dropdown-item"href="{{ route('admin.dashboard') }}">My Admin</a>
                             <a class="dropdown-item" href="{{url('/')}}">Pagina vetrina Home</a>
                             <a class="dropdown-item" href="#">Modifica profilo admin</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
