@@ -7,6 +7,7 @@
         <div class="title m-b-md">Laravel Shop</div>
         <div class="links">
             <a href="{{route('guest.products.index')}}">Products</a>
+            <a href="">Blog</a>
         </div>
     </div>
 </div>
