@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -27,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $arrey_category = Category::all();
+        return view('admin.posts.create', compact('arrey_category'));
     }
 
     /**
@@ -41,6 +43,7 @@ class PostController extends Controller
         $validated = $request->validate([
             'cover'=>['required'],
             'description'=> 'nullable',
+            'icategory_id'=> ['nullable','exists:categories,id'],
         ]);
         Post::create($validated);
         return redirect()->route('admin.posts.index')->with('message1', "un nuovo post è stato creato");
