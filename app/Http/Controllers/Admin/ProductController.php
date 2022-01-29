@@ -17,7 +17,8 @@ class ProductController extends Controller
     public function index()
     {
         /* return view('guest.products.index',['products'=>Product::all()]); */
-        $product_arrey = Product::all();
+        //$product_arrey = Product::all();
+        $product_arrey = Product::paginate(5);
         return view('admin.products.index',compact('product_arrey'));
     }
 
@@ -94,7 +95,7 @@ class ProductController extends Controller
         ]);
         $product->update($validated);
         //return redirect()->route('guest.products.show', compact('product'));
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.index')->with('message', "N.{$product->id} è stato modificato");;
     }
 
     /**
@@ -105,6 +106,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('admin.products.index')->with('message', "N.{$product->id} non è più nell'inventario");
     }
 }
