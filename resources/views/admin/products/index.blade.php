@@ -4,12 +4,20 @@
 <div class="container">
     <div class="">
         <div style='position:relative; height:4rem;' class="container-fluid d-flex align-items-right">
-            @if (session('message'))
+            @if (session('message1'))
+            <div class="mt-2 alert alert-success">
+                {{ session('message1') }}
+            </div>
+            @elseif (session('message2'))
             <div class="mt-2 alert alert-warning">
-                {{ session('message') }}
+                {{ session('message2') }}
+            </div>
+            @elseif (session('message3'))
+            <div class="mt-2 alert alert-danger">
+                {{ session('message3') }}
             </div>
             @endif
-            <a href="{{route('admin.products.create')}}"><button style='position:absolute; right:0;' class='mb-2 mt-4 float-end"'><i class="fas fa-plus"></i> Add Item</button></a>
+            <a href="{{route('admin.products.create')}}"><button style='position:absolute; right:0;' class='mb-2 mt-4 float-end"'><i class="fas fa-plus"></i> Aggiungi Prodotto</button></a>
         </div>        
         <div class="card">
             <div class="card-header">{{ __('Dashboard') }}</div>

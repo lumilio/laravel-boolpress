@@ -43,7 +43,7 @@ class PostController extends Controller
             'description'=> 'nullable',
         ]);
         Post::create($validated);
-        return redirect()->route('admin.posts.index')->with('message', "un nuovo post è stato creato");
+        return redirect()->route('admin.posts.index')->with('message1', "un nuovo post è stato creato");
     }
 
     /**
@@ -83,7 +83,7 @@ class PostController extends Controller
         ]);
         $post->update($validated);
         //return redirect()->route('guest.products.show', compact('product'));
-        return redirect()->route('admin.posts.index')->with('message', "Il Post n.{$post->id} è stato modificato");
+        return redirect()->route('admin.posts.index')->with('message2', "Il Post n.{$post->id} è stato modificato");
     }
 
     /**
@@ -95,6 +95,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('admin.posts.index')->with('message', "Il post n.{$post->id} non è più nell'inventario");
+        return redirect()->route('admin.posts.index')->with('message3', "Il post n.{$post->id} non è più nell'inventario");
     }
 }

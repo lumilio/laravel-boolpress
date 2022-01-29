@@ -52,7 +52,7 @@ class ProductController extends Controller
         //salva
         Product::create($validated);
         // redirect
-        return redirect()->route('admin.products.index')->with('message', "un nuovo prodotto è stato creato");;
+        return redirect()->route('admin.products.index')->with('message1', "un nuovo prodotto è stato creato");;
     }
 
     /**
@@ -95,7 +95,7 @@ class ProductController extends Controller
         ]);
         $product->update($validated);
         //return redirect()->route('guest.products.show', compact('product'));
-        return redirect()->route('admin.products.index')->with('message', "Il Prodotto n.{$product->id} è stato modificato");
+        return redirect()->route('admin.products.index')->with('message2', "Il Prodotto n.{$product->id} è stato modificato");
     }
 
     /**
@@ -107,6 +107,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('admin.products.index')->with('message', "Il Prodotto n.{$product->id} è stato eliminato");
+        return redirect()->route('admin.products.index')->with('message3', "Il Prodotto n.{$product->id} è stato eliminato");
     }
 }
