@@ -11,6 +11,7 @@ class Post extends Model
         'cover',
         'description',
         'slug',
+        'category_id',
     ];
     
 
@@ -24,5 +25,5 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    
+
 }
