@@ -15,7 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $post_arrey = Post::all();
+        return view('guest.posts.index',compact('post_arrey'));
     }
 
     /**
@@ -26,7 +27,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('guest.posts.show', compact('post'));
     }
 
 

@@ -6,26 +6,27 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class PostController extends Controller 
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource.   //OK
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $post_arrey = Post::paginate(5);
+        return view('admin.posts.index',compact('post_arrey'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new resource.    //OK
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -40,25 +41,25 @@ class PostController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource.   //OK
      *
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
     public function show(Post $post)
     {
-        //
+        return view('guest.posts.show', compact('post'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified resource.    //OK
      *
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('posts'));
     }
 
     /**

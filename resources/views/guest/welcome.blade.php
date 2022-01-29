@@ -6,7 +6,7 @@
     <div class="content">
         <div class="title m-b-md">Welcome page</div>
         <div class="links">
-            <a href="{{route('guest.products.index')}}">Products</a>
+            <a href="{{route('guest.posts.index')}}">Products</a>
             <a href="">Blog</a>
             <a href="">About us</a>
         </div>
