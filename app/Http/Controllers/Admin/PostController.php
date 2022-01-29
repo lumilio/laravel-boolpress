@@ -36,14 +36,14 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
         $validated = $request->validate([
             'cover'=>['required'],
             'description'=> 'nullable',
         ]);
         Post::create($validated);
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.index')->with('message', "un nuovo post è stato creato");
     }
 
     /**
@@ -69,7 +69,7 @@ class PostController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in storage.  //OK
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Post  $post
@@ -83,11 +83,11 @@ class PostController extends Controller
         ]);
         $post->update($validated);
         //return redirect()->route('guest.products.show', compact('product'));
-        return redirect()->route('admin.posts.index')->with('message', "Il Post n.{$post->id} è stato modificato");;
+        return redirect()->route('admin.posts.index')->with('message', "Il Post n.{$post->id} è stato modificato");
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from storage.  //OK
      *
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response

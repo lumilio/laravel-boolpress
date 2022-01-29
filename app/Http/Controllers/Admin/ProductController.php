@@ -38,7 +38,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Product $product)
     {
         //ddd($request->all());
         //validazione
@@ -52,7 +52,7 @@ class ProductController extends Controller
         //salva
         Product::create($validated);
         // redirect
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.index')->with('message', "un nuovo prodotto è stato creato");;
     }
 
     /**
@@ -95,7 +95,7 @@ class ProductController extends Controller
         ]);
         $product->update($validated);
         //return redirect()->route('guest.products.show', compact('product'));
-        return redirect()->route('admin.products.index')->with('message', "Il Prodotto n.{$product->id} è stato modificato");;
+        return redirect()->route('admin.products.index')->with('message', "Il Prodotto n.{$product->id} è stato modificato");
     }
 
     /**
@@ -107,6 +107,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('admin.products.index')->with('message', "Il Prodotto n.{$product->id} non è più nell'inventario");
+        return redirect()->route('admin.products.index')->with('message', "Il Prodotto n.{$product->id} è stato eliminato");
     }
 }
