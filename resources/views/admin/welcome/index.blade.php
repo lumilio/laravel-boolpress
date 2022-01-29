@@ -1,3 +1,6 @@
+@extends('admin.layouts.DashboardTemplate')
+
+@section('table')
 <div class="container">
     <div class="">
         <div class="col-md-8">
@@ -17,3 +20,7 @@
         </div>
     </div>
 </div>
+@endsection
+
+
+

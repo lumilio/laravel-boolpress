@@ -1,4 +1,4 @@
-@extends('admin.layout.DashboardTemplate')
+@extends('admin.layouts.DashboardTemplate')
 
 @section('table')
 <div class="container">
