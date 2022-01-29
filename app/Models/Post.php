@@ -6,14 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+
     protected $fillable = [            
         'cover',
         'description',
         'slug',
     ];
     
+
     public function getRouteKeyName()
     {
         return 'slug';
     }
+
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+    
 }
