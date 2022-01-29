@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('cover');
             $table->text('description')->nullable();
+            $table->string('slug');
             $table->timestamps();
         });
     }

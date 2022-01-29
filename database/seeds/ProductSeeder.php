@@ -3,6 +3,7 @@
 use App\Models\Product;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 class ProductSeeder extends Seeder
 {
@@ -19,7 +20,8 @@ class ProductSeeder extends Seeder
             $prod->image = $faker->imageUrl(600, 400, 'Products');
             $prod->price = $faker->randomFloat(2, 100, 300);
             $prod->quantity = $faker->numberBetween(1, 100);
-            $prod->description = $faker->text(); 
+            $prod->description = $faker->text();
+            $prod->slug = Str::slug($prod->name); 
             $prod->save();
         }
     }
