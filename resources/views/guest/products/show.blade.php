@@ -12,7 +12,7 @@
             <p>{{$product->price}}€</p>
             <p>{{$product->description}}</p>
             @auth
-            <a href="{{route('admin.products.edit', $product->id)}}">modifica</a>
+            <a href="{{route('admin.products.edit', $product->slug)}}">modifica</a>
             @endauth
         </div>
     </div>

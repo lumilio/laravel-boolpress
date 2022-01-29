@@ -38,8 +38,8 @@
                         <td><img width='100' src="{{$item->cover}}" alt=""></td>
 
                         <td>
-                            <a href="{{route('guest.posts.show', $item->id)}}"><i class="far fa-eye mx-2"></i></a>
-                            <a href="{{route('admin.posts.edit', $item->id)}}"><i class="fas fa-edit mx-2"></i></a>
+                            <a href="{{route('guest.posts.show', $item->slug)}}"><i class="far fa-eye mx-2"></i></a>
+                            <a href="{{route('admin.posts.edit', $item->slug)}}"><i class="fas fa-edit mx-2"></i></a>
 
 
                             <!-- Button trigger modal ------------------------->
@@ -61,7 +61,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                                            <form class="mx-2" method='post' action="{{route('admin.posts.destroy', $item->id)}}">
+                                            <form class="mx-2" method='post' action="{{route('admin.posts.destroy', $item->slug)}}">
                                                 @csrf 
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Do it!</i></button>

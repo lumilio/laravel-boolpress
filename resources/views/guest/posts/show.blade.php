@@ -8,7 +8,7 @@
             <h4>post scritto da utente n.{{$post->id}}</h4>
             <p>{{$post->description}}</p>
             @auth
-            <a href="{{route('admin.posts.edit', $post->id)}}">modifica</a>
+            <a href="{{route('admin.posts.edit', $post->slug)}}">modifica</a>
             @endauth
         </div>
     </div>

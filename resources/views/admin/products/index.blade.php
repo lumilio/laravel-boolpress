@@ -41,17 +41,17 @@
                         <td>{{$item->price}}</td>
                         <td>{{$item->quantity}}</td>
                         <td>
-                            <a href="{{route('guest.products.show', $item->id)}}"><i class="far fa-eye mx-2"></i></a>
-                            <a href="{{route('admin.products.edit', $item->id)}}"><i class="fas fa-edit mx-2"></i></a>
+                            <a href="{{route('guest.products.show', $item->slug)}}"><i class="far fa-eye mx-2"></i></a>
+                            <a href="{{route('admin.products.edit', $item->slug)}}"><i class="fas fa-edit mx-2"></i></a>
 
 
                             <!-- Button trigger modal ------------------------->
-                            <a type="button" data-bs-toggle="modal" data-bs-target="#delete{{$item->id}}">
+                            <a type="button" data-bs-toggle="modal" data-bs-target="#delete{{$item->slug}}">
                                 <i class="far text-danger fa-trash-alt mx-2"></i>
                             </a>
                             
                             <!-- Modal -->
-                            <div class="modal fade" id="delete{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-{{$item->id}}" aria-hidden="true">
+                            <div class="modal fade" id="delete{{$item->slug}}" tabindex="-1" role="dialog" aria-labelledby="modal-{{$item->id}}" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -64,7 +64,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                                            <form class="mx-2" method='post' action="{{route('admin.products.destroy', $item->id)}}">
+                                            <form class="mx-2" method='post' action="{{route('admin.products.destroy', $item->slug)}}">
                                                 @csrf 
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Do it!</i></button>

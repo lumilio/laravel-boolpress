@@ -4,9 +4,9 @@
 <div class=" container-fluid jusify-content-center">
     <div class="container">
         <div>
-            <h1>create a new post</h1>
+            <h1>edit post</h1>
             @include('admin.posts.partials.errorCreate')
-            <form action="{{route('admin.posts.update', $post->id)}}" method="post">
+            <form action="{{route('admin.posts.update', $post->slug)}}" method="post">
             @csrf
             @method('PUT')
                 <div class='mb-3'>
