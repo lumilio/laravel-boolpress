@@ -9,7 +9,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{$item->name}}</h5>
                 <p class="card-text">{{$item->price}}€</p>
-                <a href="{{route('guest.products.show', $item->id)}}" class="btn btn-primary">Vedi</a>
+                <a href="{{route('guest.products.show', $item->slug)}}" class="btn btn-primary">Vedi</a>
             </div>
         </div>
         @empty

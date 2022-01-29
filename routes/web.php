@@ -20,8 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::namespace('Guest')->prefix('guest')->name('guest.')->group(function(){
-    Route::resource('products','ProductController')->only(['index','show']);
-    Route::resource('posts','PostController')->only(['index','show']);
+    Route::resource('products','ProductController')->only(['index','show'])->parameter('product', 'post:slug');
+    Route::resource('posts','PostController')->only(['index','show'])->parameter('post', 'post:slug');
 });
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('auth')->group(function(){
@@ -29,3 +29,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('auth')->
     Route::resource('products','ProductController');
     Route::resource('posts','PostController');
 });
+
+
+
+
+
