@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class PostController extends Controller 
 {
@@ -45,7 +45,7 @@ class PostController extends Controller
             'description'=> 'nullable',
             'icategory_id'=> ['nullable','exists:categories,id'],
         ]);
-        //$validated['slug']= Str::slug($validated[]);
+        $validated['slug']= Str::slug($validated['cover']);
         Post::create($validated);
         return redirect()->route('admin.posts.index')->with('message1', "un nuovo post è stato creato");
     }
