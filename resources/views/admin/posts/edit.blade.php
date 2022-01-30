@@ -24,6 +24,23 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+
+
+
+
+                <!------------- category form to choose ---------->
+                <div class="form-group">
+                    <label for="category_id">Categories</label>
+                    <select class="form-control" name="category_id" id="category_id">
+                        <option selected disabled>Select a category</option>
+                        @foreach($arrey_category as $item)
+                        <option value="{{$item->id}}">{{$item->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+
+
                 <div style='position:relative; height:4rem;' class="container-fluid d-flex alig-items-right">
                     <button style='position:absolute; right:0;' type="submit" class="btn btn-success">Update</button>
                 </div>
