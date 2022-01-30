@@ -42,10 +42,11 @@ class PostController extends Controller
      */
     public function store(Request $request, Post $post)
     {
+        
         $validated = $request->validate([
             'cover'=>['required',],
             'description'=> 'nullable',
-            'icategory_id'=> ['nullable','exists:categories,id'],
+            'category_id'=> ['nullable','exists:categories,id'],
         ]);
         $validated['slug']= Str::slug($validated['cover']);
         Post::create($validated);
