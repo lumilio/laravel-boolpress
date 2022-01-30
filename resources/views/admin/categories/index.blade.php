@@ -17,6 +17,9 @@
                 {{ session('message3') }}
             </div>
             @endif
+            @error('name')
+            <div class="alert alert-danger">CHANGES DENIED ⛔️  {{ $message }}</div>
+            @enderror
 
 <!-------------------------------- CREATE form modal -------------------------------------------->
             <a class='ms-4' type="button" data-bs-toggle="modal" data-bs-target="#create_Category">
@@ -37,9 +40,6 @@
                         <form class="mx-2" method='post' action="{{route('admin.categories.store')}}">
                         @csrf 
                             <input type="text" name='name' id='name' class='form-control' value="">
-                            @error('name')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
                             <div class="container-fluid d-flex justify-content-end">
                                 <button type="button" class="btn mx-2 my-3 btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" class="btn my-3 text-white btn-success">Save</i></button>
@@ -88,9 +88,6 @@
                                         @csrf 
                                         @method('PUT')
                                             <input type="text" name='name' id='name' class='form-control' value="{{$item->name}}">
-                                            @error('name')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
                                             <div class="container-fluid d-flex justify-content-end">
                                                 <button type="button" class="btn mx-2 my-3 btn-secondary" data-bs-dismiss="modal">Close</button>
                                                 <button type="submit" class="btn my-3 text-white btn-primary">Save</i></button>
