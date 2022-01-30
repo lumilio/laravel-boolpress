@@ -22,6 +22,8 @@ Auth::routes();
 Route::namespace('Guest')->prefix('guest')->name('guest.')->group(function(){
     Route::resource('products','ProductController')->only(['index','show'])->parameter('product', 'post:slug');
     Route::resource('posts','PostController')->only(['index','show'])->parameter('post', 'post:slug');
+    Route::get('categories/{category:slug}/posts', 'CategoryController@index')->name('categories.post');
+
 });
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('auth')->group(function(){
