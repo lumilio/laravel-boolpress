@@ -45,6 +45,7 @@ class PostController extends Controller
             'description'=> 'nullable',
             'icategory_id'=> ['nullable','exists:categories,id'],
         ]);
+        //$validated['slug']= Str::slug($validated[]);
         Post::create($validated);
         return redirect()->route('admin.posts.index')->with('message1', "un nuovo post è stato creato");
     }
