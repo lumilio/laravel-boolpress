@@ -27,20 +27,54 @@
                         <th>ID</th>
                         <th>nome</th>
                         <th>n.associati</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($category_arrey as $item)
                     <tr>
                         <td scope="row">{{$item->id}}</td>
-                        <td>{{$item->name}}</td>
-                        <td>$item->numero</td>
 
+<!-------------------------------- EDIT form modal -------------------------------------------->
                         <td>
+                            {{$item->name}} 
+                            <a class='ms-4' type="button" data-bs-toggle="modal" data-bs-target="#edit{{$item->id}}">
+                                rinomina
+                            </a>
+                            
+                            <!-- Modal -->
+                            <div class="modal fade" id="edit{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-{{$item->id}}" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Modifica Nome</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            Rinomina la categoria "{{$item->name}}" id: n.{{$item->id}}
+                                        </div>
 
+                                        <form class="mx-2" method='post' action="{{route('admin.categories.update', $item->slug)}}">
+                                        @csrf 
+                                        @method('PATCH')
+                                            <input type="text" name='name' id='name' class='form-control' value="{{$item->name}}">
+                                            @error('name')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                            <div class="container-fluid d-flex justify-content-end">
+                                                <button type="button" class="btn mx-2 my-3 btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn my-3 text-white btn-primary">Do it!</i></button>
+                                            </div>
+                                        </form>  
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+<!--------------------------------------------------------------------------------------------------->
 
+                        <td><span class="badge bg-primary">{{$item->posts()->count()}}</span></td>
 
-                            <!-- Button trigger modal ------------------------->
+<!-------------------------------- DELETE Button trigger modal -------------------------------------------->
+                        <td>
                             <a type="button" data-bs-toggle="modal" data-bs-target="#delete{{$item->id}}">
                                 <i class="far text-danger fa-trash-alt mx-2"></i>
                             </a>
@@ -68,8 +102,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- ---------------------------------------------->
                         </td>
+<!--------------------------------------------------------------------------------------------------->
+
                     </tr>
                     @empty
                         <p>no data</p>
