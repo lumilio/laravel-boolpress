@@ -17,8 +17,39 @@
                 {{ session('message3') }}
             </div>
             @endif
-            <a href="{{route('admin.categories.create')}}"><button style='position:absolute; right:0;' class='mb-2 mt-4 float-end"'><i class="fas fa-plus"></i> Crea categorie</button></a>
-        </div>        
+
+<!-------------------------------- CREATE form modal -------------------------------------------->
+            <a class='ms-4' type="button" data-bs-toggle="modal" data-bs-target="#create_Category">
+            <button style='position:absolute; right:0;' class='mb-2 mt-4 float-end"'><i class="fas fa-plus"></i> Aggiungi Categoria</button></a>
+            </a>
+                            
+            <!-- Modal -->
+            <div class="modal fade" id="create_Category" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Crea Categoria</h5>
+                        </div>
+                        <div class="modal-body">
+                                            Dai un nome alla nuova categoria
+                        </div>
+
+                        <form class="mx-2" method='post' action="{{route('admin.categories.store')}}">
+                        @csrf 
+                            <input type="text" name='name' id='name' class='form-control' value="">
+                            @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                            <div class="container-fluid d-flex justify-content-end">
+                                <button type="button" class="btn mx-2 my-3 btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn my-3 text-white btn-success">Save</i></button>
+                            </div>
+                        </form>  
+                    </div>
+                </div>
+            </div>
+        </div>  
+<!------------>
         <div class="card">
             <div class="card-header">{{ __('Dashboard') }}</div>
             <table class="table container">
@@ -35,7 +66,7 @@
                     <tr>
                         <td scope="row">{{$item->id}}</td>
 
-<!-------------------------------- EDIT form modal -------------------------------------------->
+<!-------------------------------- EDIT MODAL -------------------------------------------->
                         <td>
                             {{$item->name}} 
                             <a class='ms-4' type="button" data-bs-toggle="modal" data-bs-target="#edit{{$item->id}}">
@@ -62,18 +93,17 @@
                                             @enderror
                                             <div class="container-fluid d-flex justify-content-end">
                                                 <button type="button" class="btn mx-2 my-3 btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn my-3 text-white btn-primary">Do it!</i></button>
+                                                <button type="submit" class="btn my-3 text-white btn-primary">Save</i></button>
                                             </div>
                                         </form>  
                                     </div>
                                 </div>
                             </div>
                         </td>
-<!--------------------------------------------------------------------------------------------------->
-
+<!----------->
                         <td><span class="badge bg-primary">{{$item->posts()->count()}}</span></td>
 
-<!-------------------------------- DELETE Button trigger modal -------------------------------------------->
+<!-------------------------------- DELETE MODAL -------------------------------------------->
                         <td>
                             <a type="button" data-bs-toggle="modal" data-bs-target="#delete{{$item->id}}">
                                 <i class="far text-danger fa-trash-alt mx-2"></i>
@@ -103,8 +133,7 @@
                                 </div>
                             </div>
                         </td>
-<!--------------------------------------------------------------------------------------------------->
-
+<!--------------->
                     </tr>
                     @empty
                         <p>no data</p>

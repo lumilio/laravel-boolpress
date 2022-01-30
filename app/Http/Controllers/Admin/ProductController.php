@@ -52,7 +52,7 @@ class ProductController extends Controller
         ]);
         $validated['slug']= Str::slug($validated['name']);
         Product::create($validated);
-        return redirect()->route('admin.products.index')->with('message1', "un nuovo prodotto è stato creato");;
+        return redirect()->route('admin.products.index')->with('message1', "un nuovo prodotto è stato creato");
     }
 
     /**
