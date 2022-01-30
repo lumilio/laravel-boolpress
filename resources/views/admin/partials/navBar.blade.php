@@ -19,6 +19,12 @@
                             Posts
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('admin.categories.index')}}">
+                <span data-feather="file"></span>
+                            Categories
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

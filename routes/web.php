@@ -28,8 +28,9 @@ Route::namespace('Guest')->prefix('guest')->name('guest.')->group(function(){
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('auth')->group(function(){
     Route::get('/', 'HomeController@index')->name('dashboard');
-    Route::resource('products','ProductController');
-    Route::resource('posts','PostController');
+    Route::resource('products','ProductController')->parameter('product', 'post:slug');
+    Route::resource('posts','PostController')->parameter('product', 'post:slug');
+    Route::resource('categories','CategoryController')->parameter('product', 'post:slug');
 });
 
 
