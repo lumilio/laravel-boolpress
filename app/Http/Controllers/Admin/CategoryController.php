@@ -81,8 +81,8 @@ class CategoryController extends Controller
         $validated = $request->validate([
             'name'=>['required', Rule::unique('categories')->ignore($category->id)],
         ]);
+        $validated['slug']= Str::slug($validated['name']);
         $category->update($validated);
-        //return redirect()->route('guest.products.show', compact('product'));
         return redirect()->route('admin.categories.index')->with('message2', "La Categoria n.{$category->id} è stata rinominata");
     }
 

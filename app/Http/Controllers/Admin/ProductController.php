@@ -93,8 +93,8 @@ class ProductController extends Controller
             'quantity'=> 'nullable',
             'description'=> 'nullable',
         ]);
+        $validated['slug']= Str::slug($validated['name']);
         $product->update($validated);
-        //return redirect()->route('guest.products.show', compact('product'));
         return redirect()->route('admin.products.index')->with('message2', "Il Prodotto n.{$product->id} è stato modificato");
     }
 

@@ -86,7 +86,7 @@
 
                                         <form class="mx-2" method='post' action="{{route('admin.categories.update', $item->slug)}}">
                                         @csrf 
-                                        @method('PATCH')
+                                        @method('PUT')
                                             <input type="text" name='name' id='name' class='form-control' value="{{$item->name}}">
                                             @error('name')
                                             <div class="alert alert-danger">{{ $message }}</div>
