@@ -41,7 +41,7 @@ class PostController extends Controller
     public function store(Request $request, Post $post)
     {
         $validated = $request->validate([
-            'cover'=>['required'],
+            'cover'=>['required',],
             'description'=> 'nullable',
             'icategory_id'=> ['nullable','exists:categories,id'],
         ]);
