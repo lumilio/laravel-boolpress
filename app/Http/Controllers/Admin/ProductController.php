@@ -19,7 +19,7 @@ class ProductController extends Controller
     {
         /* return view('guest.products.index',['products'=>Product::all()]); */
         //$product_arrey = Product::all();
-        $product_arrey = Product::paginate(5);
+        $product_arrey = Product::orderByDesc('id')->paginate(5);
         return view('admin.products.index',compact('product_arrey'));
     }
 

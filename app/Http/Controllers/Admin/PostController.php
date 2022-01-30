@@ -19,7 +19,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post_arrey = Post::paginate(5);
+        $post_arrey = Post::orderByDesc('id')->paginate(5);
         return view('admin.posts.index',compact('post_arrey'));
     }
 
