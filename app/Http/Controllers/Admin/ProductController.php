@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\Product;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -48,9 +49,8 @@ class ProductController extends Controller
             'quantity'=> 'nullable',
             'description'=> 'nullable',
         ]);
-        //salva
+        $validated['slug']= Str::slug($validated['name']);
         Product::create($validated);
-        // redirect
         return redirect()->route('admin.products.index')->with('message1', "un nuovo prodotto è stato creato");;
     }
 
