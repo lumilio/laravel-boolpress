@@ -88,7 +88,9 @@ class PostController extends Controller
         $validated = $request->validate([
             'cover'=>['required'],
             'description'=> 'nullable',
+            'category_id'=> ['nullable','exists:categories,id'],
         ]);
+        $validated['slug']= Str::slug($validated['cover']);
         $post->update($validated);
         //return redirect()->route('guest.products.show', compact('product'));
         return redirect()->route('admin.posts.index')->with('message2', "Il Post n.{$post->id} è stato modificato");
