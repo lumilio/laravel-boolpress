@@ -15,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index(Category $category)
     {
+        $category_arrey = Category::all();
         $filtered_posts = $category->posts()->orderByDesc('id')->paginate(50);
-        return view('guest.categories.posts', compact('filtered_posts','category'));
+        return view('guest.categories.posts', compact('filtered_posts','category','category_arrey'));
     }
 }
