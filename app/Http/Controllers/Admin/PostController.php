@@ -8,7 +8,7 @@ use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Support\Str;
 // use Illuminate\Validation\Rule;
-// use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller 
 {
@@ -19,7 +19,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post_arrey = Post::orderByDesc('id')->paginate(5);
+        //$post_arrey = Post::orderByDesc('id')->paginate(5);
+        $post_arrey = Auth::user()->posts()->orderByDesc('id')->paginate(5);
         return view('admin.posts.index',compact('post_arrey'));
     }
 
