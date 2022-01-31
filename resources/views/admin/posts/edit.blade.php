@@ -28,7 +28,7 @@
 
 
 
-                <!------------- category form to choose ---------->
+                <!------------- selectors ---------->
                 <div class="form-group">
                     <label for="category_id">Categoria :</label>
                     <select class="form-control" name="category_id" id="category_id">
