@@ -125,7 +125,7 @@ class PostController extends Controller
     {
         if(Auth::id() === $post->user_id){
             $validated = $request->validate([
-                'token1'=>['required', 'unique:posts'],
+                'token1'=>['required', Rule::unique('posts')->ignore($post->id)],
                 'token2'=>'nullable',
                 'cover'=>'nullable',
                 'description'=> 'nullable',
