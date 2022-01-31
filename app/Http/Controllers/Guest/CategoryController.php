@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index(Category $category)
     {
-        $posts = $category->posts()->orderByDesc('id')->paginate(10);
-        return view('guest.categories.posts', compact('posts','category'));
+        $filtered_posts = $category->posts()->orderByDesc('id')->paginate(50);
+        return view('guest.categories.posts', compact('filtered_posts','category'));
     }
 }

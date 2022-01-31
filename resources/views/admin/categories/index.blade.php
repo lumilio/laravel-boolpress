@@ -98,8 +98,12 @@
                             </div>
                         </td>
 <!----------->
-                        <td><span class="badge bg-primary">{{$item->posts()->count()}}  </span><a class='mx-2' href=""><i class="far fa-eye mx-2"></i></a></td>
-
+                        <td>
+                            <span class="badge bg-primary">{{$item->posts()->count()}}</span>
+                               <a class='mx-2' href="{{route('guest.categories.post', $item->slug)}}">
+                                   <i class="far fa-eye mx-2"></i>
+                                </a>    
+                            </td>
 <!-------------------------------- DELETE MODAL -------------------------------------------->
                         <td>
                             <a type="button" data-bs-toggle="modal" data-bs-target="#delete{{$item->id}}">
