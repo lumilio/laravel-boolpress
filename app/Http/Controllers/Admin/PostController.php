@@ -105,6 +105,8 @@ class PostController extends Controller
         }
     }
 
+
+    
     /**
      * Update the specified resource in storage.  //OK
      *
@@ -120,7 +122,6 @@ class PostController extends Controller
                 'description'=> 'nullable',
                 'category_id'=> ['nullable','exists:categories,id'],
             ]);
-
             $validated['slug']= Str::slug($validated['cover']);
             $post->update($validated);
             if ($request->has('tags')) {
