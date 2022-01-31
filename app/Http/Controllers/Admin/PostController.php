@@ -95,7 +95,6 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        ddd($post->user_id);
         $arrey_category = Category::all();
         $tags = Tag::all();
 
