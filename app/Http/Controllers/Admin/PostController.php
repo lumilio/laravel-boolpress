@@ -50,6 +50,7 @@ class PostController extends Controller
             'category_id'=> ['nullable','exists:categories,id'],
         ]);
         $validated['slug']= Str::slug($validated['cover']);
+        $validated['user_id']= Auth::id();
         Post::create($validated);
         return redirect()->route('admin.posts.index')->with('message1', "un nuovo post è stato creato");
     }
@@ -74,7 +75,11 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $arrey_category = Category::all();
-        return view('admin.posts.edit', compact('post','arrey_category'));
+        if(Auth::id()===$post->user_id){
+            return view('admin.posts.edit', compact('post','arrey_category'));
+        }else {
+            abort(403);
+        }
     }
 
     /**
@@ -86,15 +91,19 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $validated = $request->validate([
-            'cover'=>['required'],
-            'description'=> 'nullable',
-            'category_id'=> ['nullable','exists:categories,id'],
-        ]);
-        $validated['slug']= Str::slug($validated['cover']);
-        $post->update($validated);
-        //return redirect()->route('guest.products.show', compact('product'));
-        return redirect()->route('admin.posts.index')->with('message2', "Il Post n.{$post->id} è stato modificato");
+        if(Auth::id()===$post->user_id){
+            $validated = $request->validate([
+                'cover'=>['required'],
+                'description'=> 'nullable',
+                'category_id'=> ['nullable','exists:categories,id'],
+            ]);
+            $validated['slug']= Str::slug($validated['cover']);
+            $post->update($validated);
+            //return redirect()->route('guest.products.show', compact('product'));
+            return redirect()->route('admin.posts.index')->with('message2', "Il Post n.{$post->id} è stato modificato");
+        } else{
+            abort(403);
+        } 
     }
 
     /**
@@ -105,7 +114,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->delete();
-        return redirect()->route('admin.posts.index')->with('message3', "Il post n.{$post->id} non è più nell'inventario");
+        if(Auth::id()===$post->user_id){
+            $post->delete();
+            return redirect()->route('admin.posts.index')->with('message3', "Il post n.{$post->id} non è più nell'inventario");
+        } else{
+            abort(403);
+        }
     }
 }
