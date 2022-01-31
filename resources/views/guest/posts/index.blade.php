@@ -21,6 +21,9 @@
         @endforelse 
     </div>
 </div>
+<div class="container-fluid d-flex justify-content-center">
+    {{$post_arrey->links()}}
+</div>
 @endsection
 
 

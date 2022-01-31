@@ -17,4 +17,7 @@
         @endforelse 
     </div>
 </div>
+<div class="container-fluid d-flex justify-content-center">
+    {{$product_arrey->links()}}
+</div>
 @endsection

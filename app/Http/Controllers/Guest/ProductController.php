@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         /* return view('guest.products.index',['products'=>Product::all()]); */
-        $product_arrey = Product::all();
+        $product_arrey = Product::orderByDesc('id')->paginate(12);
         return view('guest.products.index',compact('product_arrey'));
     }
 
