@@ -2,7 +2,10 @@
     <ul style='list-style:none;'>
         <li><a style='color:white;' href="{{route('guest.posts.index')}}">All</a></li>
         @forelse ($category_arrey as $item)
-        <li><a style='color:white;' href="{{route('guest.categories.post', $item->slug)}}">{{$item->name}}</a></li>
+        <li>
+            <a style='color:white;' href="{{route('guest.categories.post', $item->slug)}}">{{$item->name}}</a>
+            <span class="badge bg-primary">{{$item->posts()->count()}}</span>
+        </li>
         @empty
         <li>no data</li>
         @endforelse 

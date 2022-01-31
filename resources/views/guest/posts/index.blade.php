@@ -7,6 +7,10 @@
         @forelse ($post_arrey as $item)
         <div class="card mb-4" style="width: 50%">
             <div class="card-body">
+                @if($item->category != null)
+                <span class="badge bg-primary">{{$item->category->name}}</span>
+                @else
+                @endif
                 <p class="card-text">{{$item->description}}€</p>
                 <a href="{{route('guest.posts.show', $item->slug)}}" class="btn btn-primary">Vedi</a>
             </div>
@@ -18,3 +22,5 @@
     </div>
 </div>
 @endsection
+
+
