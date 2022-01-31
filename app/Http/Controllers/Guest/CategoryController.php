@@ -14,12 +14,12 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Category $category)
+    public function index(Category $category, Tag $tag)
     {
         $category_arrey = Category::all();
         $tag_arrey = Tag::all();
         $filtered_posts = $category->posts()->orderByDesc('id')->paginate(50);
         //ddd($category_arrey);
-        return view('guest.categories.posts', compact('filtered_posts','category','category_arrey','tag_arrey'));
+        return view('guest.categories.posts', compact('filtered_posts','category','tag','category_arrey','tag_arrey'));
     }
 }
