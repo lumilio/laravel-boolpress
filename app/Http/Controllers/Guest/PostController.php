@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Guest;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -18,7 +19,8 @@ class PostController extends Controller
     {
         $post_arrey  = Post::orderByDesc('id')->paginate(12);
         $category_arrey = Category::all();
-        return view('guest.posts.index',compact('post_arrey','category_arrey'));
+        $tag_arrey = Tag::all();
+        return view('guest.posts.index',compact('post_arrey','category_arrey','tag_arrey'));
     }
 
     /**
