@@ -37,7 +37,15 @@
                     </select>
                 </div>
 
-
+                <div class="mb-3 mt-3">
+                    <label for="tags" class="form-label">Seleziona i Tags</label>
+                    <select multiple style='height:150px' class="form-select" name="tags[]" id="tags">
+                            <option disabled>Select tags</option>
+                            @foreach($tags as $item)
+                            <option value="{{$item->id}}">{{$item->name}}</option>
+                            @endforeach
+                    </select>
+                </div>
 
 
                 <div style='position:relative; height:4rem;' class="container-fluid d-flex alig-items-right">
