@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -19,7 +20,8 @@ class ProductController extends Controller
     {
         /* return view('guest.products.index',['products'=>Product::all()]); */
         //$product_arrey = Product::all();
-        $product_arrey = Product::orderByDesc('id')->paginate(5);
+        //$product_arrey = Product::orderByDesc('id')->paginate(5);
+        $product_arrey = Auth::user()->products()->orderByDesc('id')->paginate(5);
         return view('admin.products.index',compact('product_arrey'));
     }
 
@@ -51,6 +53,7 @@ class ProductController extends Controller
             'description'=> 'nullable',
         ]);
         $validated['slug']= Str::slug($validated['name']);
+        $validated['user_id']= Auth::id();
         Product::create($validated);
         return redirect()->route('admin.products.index')->with('message1', "un nuovo prodotto è stato creato");
     }
@@ -74,7 +77,11 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin.products.edit', compact('product'));
+        if(Auth::id()===$product->user_id){
+            return view('admin.products.edit', compact('product'));
+        } else{
+            abort(403);
+        }
     }
 
     /**
@@ -86,16 +93,20 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $validated = $request->validate([
-            'name'=>['required', Rule::unique('products')->ignore($product->id)],
-            'image'=>'nullable',
-            'price'=> 'nullable',
-            'quantity'=> 'nullable',
-            'description'=> 'nullable',
-        ]);
-        $validated['slug']= Str::slug($validated['name']);
-        $product->update($validated);
-        return redirect()->route('admin.products.index')->with('message2', "Il Prodotto n.{$product->id} è stato modificato");
+        if(Auth::id()===$product->user_id){
+            $validated = $request->validate([
+                'name'=>['required', Rule::unique('products')->ignore($product->id)],
+                'image'=>'nullable',
+                'price'=> 'nullable',
+                'quantity'=> 'nullable',
+                'description'=> 'nullable',
+            ]);
+            $validated['slug']= Str::slug($validated['name']);
+            $product->update($validated);
+            return redirect()->route('admin.products.index')->with('message2', "Il Prodotto n.{$product->id} è stato modificato");
+        } else{
+            abort(403);
+        } 
     }
 
     /**
@@ -106,7 +117,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->delete();
-        return redirect()->route('admin.products.index')->with('message3', "Il Prodotto n.{$product->id} è stato eliminato");
+        if(Auth::id()===$product->user_id){
+            $product->delete();
+            return redirect()->route('admin.products.index')->with('message3', "Il Prodotto n.{$product->id} è stato eliminato");
+        } else{
+            abort(403);
+        }
     }
 }

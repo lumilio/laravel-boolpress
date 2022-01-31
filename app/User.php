@@ -43,4 +43,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Models\Post::class);
     }
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(Models\Product::class);
+    }
 }
