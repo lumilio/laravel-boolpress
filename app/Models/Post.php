@@ -16,6 +16,9 @@ class Post extends Model
         'category_id',
         'user_id',
     ];
+
+    
+    protected $table = 'posts';
     
 
     public function getRouteKeyName()

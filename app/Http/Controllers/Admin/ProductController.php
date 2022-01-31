@@ -77,6 +77,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        //ddd($product->user_id);
         if(Auth::id()===$product->user_id){
             return view('admin.products.edit', compact('product'));
         } else{
