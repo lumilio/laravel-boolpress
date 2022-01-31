@@ -8,7 +8,7 @@
             <h4>post scritto da utente n.{{$post->id}}</h4>
             <p>{{$post->description}}</p>
             @if($post->category != null)
-            <p>categoria : <a href="">{{$post->category->name}}</a></p>
+            <p>categoria : <a href="{{route('guest.categories.post', $post->category->slug)}}">{{$post->category->name}}</a></p>
             @else
             <p>categoria : non specificata</p>
             @endif
