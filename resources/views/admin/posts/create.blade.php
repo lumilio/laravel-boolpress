@@ -8,7 +8,26 @@
             @include('admin.posts.partials.errorCreate')
             <form action="{{route('admin.posts.store')}}" method="post">
             @csrf
-            <div class='mb-3'>
+
+
+
+                <div class='mb-3'>
+                    <label for="token1" class="form-label">Dai un titolo univoco *</label>
+                    <input type="text" name='token1' id='token1' class='form-control' placeholder='123456' aria-describedby='token1Helper' value="{{old('token1')}}">
+                    <small id="token1Helper" class="text-muted">insert token1</small>
+                    @error('token1')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class='mb-3'>
+                    <label for="token2" class="form-label">////</label>
+                    <input type="text" name='token2' id='token2' class='form-control' placeholder='123456' aria-describedby='token2Helper' value="{{old('token2')}}">
+                    <small id="token2Helper" class="text-muted">insert token2</small>
+                    @error('token2')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class='mb-3'>
                     <label for="cover" class="form-label">cover</label>
                     <input type="text" name='cover' id='cover' class='form-control' placeholder='http://' aria-describedby='coverHelper' value="{{old('cover')}}">
                     <small id="coverHelper" class="text-muted">insert cover</small>
@@ -36,8 +55,6 @@
                         @endforeach
                     </select>
                 </div>
-
-
                 <div class="mb-3 mt-3">
                     <label for="tags" class="form-label">Seleziona i Tags</label>
                     <select multiple style='height:150px' class="form-select" name="tags[]" id="tags">
@@ -47,8 +64,6 @@
                             @endforeach
                     </select>
                 </div>
-
-
                 <div style='position:relative; height:4rem;' class="container-fluid d-flex alig-items-right">
                     <button style='position:absolute; right:0;' type="submit" class="btn btn-success">Create</button>
                 </div>

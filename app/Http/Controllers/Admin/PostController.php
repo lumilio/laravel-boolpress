@@ -55,19 +55,26 @@ class PostController extends Controller
     public function store(Request $request, Post $post)
     {
         $validated = $request->validate([
-            'cover'=>['required',],
+            'token1'=>['required', 'unique:posts'],
+            'token2'=>'nullable',
+            'cover'=>'nullable',
             'description'=> 'nullable',
             'category_id'=> ['nullable','exists:categories,id'],
         ]);
         
-        $validated['slug']= Str::slug($validated['cover']);
+        $validated['slug']= Str::slug($validated['token1']);
         $validated['user_id']= Auth::id();
         $post = Post::create($validated);
+
+
+        //----------------------------------------------------- si fa per relazioni many to many?
         if($request->has('tags')){
             $request->validate([
                 'tags'=> ['nullable','exists:tags,id'],
             ]);
         }
+        //----------------------------------------------------- 
+
         $post->tags()->attach($request->tags);
         return redirect()->route('admin.posts.index')->with('message1', "un nuovo post è stato creato");
     }
@@ -118,18 +125,23 @@ class PostController extends Controller
     {
         if(Auth::id() === $post->user_id){
             $validated = $request->validate([
-                'cover'=>['required'],
+                'token1'=>['required', 'unique:posts'],
+                'token2'=>'nullable',
+                'cover'=>'nullable',
                 'description'=> 'nullable',
                 'category_id'=> ['nullable','exists:categories,id'],
             ]);
-            $validated['slug']= Str::slug($validated['cover']);
+            $validated['slug']= Str::slug($validated['token1']);
             $post->update($validated);
+
+            //----------------------------------------------------- si fa per relazioni many to many?
             if ($request->has('tags')) {
                 $request->validate([
                     'tags' => ['nullable', 'exists:tags,id']
                 ]);
                 $post->tags()->sync($request->tags);
             }
+            //----------------------------------------------------- 
             return redirect()->route('admin.posts.index')->with('message2', "Il Post n.{$post->id} è stato modificato");
         } else{
             abort(403);

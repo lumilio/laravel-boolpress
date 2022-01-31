@@ -9,6 +9,26 @@
             <form action="{{route('admin.posts.update', $post->slug)}}" method="post">
             @csrf
             @method('PUT')
+
+
+
+
+            <div class='mb-3'>
+                    <label for="token1" class="form-label">Dai un titolo univoco *</label>
+                    <input type="text" name='token1' id='token1' class='form-control' placeholder='123456' aria-describedby='token1Helper' value="{{$post->token1}}">
+                    <small id="token1Helper" class="text-muted">insert token1</small>
+                    @error('token1')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class='mb-3'>
+                    <label for="token2" class="form-label">////</label>
+                    <input type="text" name='token2' id='token2' class='form-control' placeholder='123456' aria-describedby='token2Helper' value="{{$post->token2}}">
+                    <small id="token2Helper" class="text-muted">insert token2</small>
+                    @error('token2')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
                 <div class='mb-3'>
                     <label for="cover" class="form-label">cover</label>
                     <input type="text" name='cover' id='cover' class='form-control' placeholder='http://' aria-describedby='coverHelper' value="{{$post->cover}}">

@@ -15,10 +15,15 @@ class PostSeeder extends Seeder
     public function run(Faker $faker)
     {
         for ($i=0; $i < 10; $i++) { 
+
             $prod = new Post();
+
+            $prod->token1 = $faker->unique()->numberBetween(100000000, 1000000000);
+            $prod->token2 = $faker->unique()->numberBetween(100000000, 1000000000);
             $prod->cover = $faker->imageUrl(600, 400, 'Products');
             $prod->description = $faker->text();
-            $prod->slug = Str::slug($prod->cover);
+            $prod->slug = Str::slug($prod->token1); /* con l'intento di generare un id univoco per i post fatti con faker */
+
             $prod->save();
         }
     }

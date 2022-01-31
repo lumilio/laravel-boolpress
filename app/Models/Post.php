@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Post extends Model
 {
 
-    protected $fillable = [            
+    protected $fillable = [ 
+        'token1',
+        'token2',           
         'cover',
         'description',
         'slug',
