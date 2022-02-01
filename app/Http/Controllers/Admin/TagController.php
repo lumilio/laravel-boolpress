@@ -15,7 +15,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tag_arrey = Tag::orderByDesc('id')->paginate(20);
+        return view('admin.tags.index',compact('tag_arrey'));
     }
 
     /**
@@ -36,7 +37,12 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name'=>['required','unique:tags'],
+        ]);
+        $validated['slug']= Str::slug($validated['name']);
+        Tag::create($validated);
+        return redirect()->route('admin.tags.index')->with('message1', "Il Tag è stato salvato");
     }
 
     /**
@@ -70,7 +76,12 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+        $validated = $request->validate([
+            'name'=>['required', Rule::unique('tags')->ignore($tag->id)],
+        ]);
+        $validated['slug']= Str::slug($validated['name']);
+        $tag->update($validated);
+        return redirect()->route('admin.tags.index')->with('message2', "Il Tag n.{$tag->id} è stata rinominata");
     }
 
     /**
@@ -81,6 +92,7 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+        return redirect()->route('admin.tags.index')->with('message3', "La Categoria n.{$tag->id} è stata eliminata");
     }
 }
