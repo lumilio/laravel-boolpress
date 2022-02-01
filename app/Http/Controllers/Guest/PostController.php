@@ -31,7 +31,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('guest.posts.show', compact('post'));
+        $choose_tag = $post->tags;
+        $tag_arrey = Tag::all();
+        return view('guest.posts.show', compact('post','choose_tag','tag_arrey'));
     }
 
 

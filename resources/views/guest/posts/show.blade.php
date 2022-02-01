@@ -12,7 +12,35 @@
             @else
             <p>categoria : non specificata</p>
             @endif
-            @auth
+
+
+
+
+
+
+
+
+
+
+
+
+
+            @foreach ($tag_arrey as $item1)
+            @if(in_array($item1,$choose_tag))
+
+            <a style='color:white;' href="{{route('guest.tags.post', $item1->slug)}}">{{$item1->name}}</a>
+
+            @else
+            <p>nessun tag assegnato</p>
+            @endif
+            @endforeach
+
+
+
+
+
+
+            @auth  <!-- è possibile autenticarsi da qui? -->
             <a href="{{route('admin.posts.edit', $post->slug)}}">modifica</a>
             @endauth
         </div>
