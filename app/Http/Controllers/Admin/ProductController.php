@@ -19,10 +19,10 @@ class ProductController extends Controller
     public function index()
     {
         /* return view('guest.products.index',['products'=>Product::all()]); */
-        //$product_arrey = Product::all();
-        //$product_arrey = Product::orderByDesc('id')->paginate(5);
-        $product_arrey = Auth::user()->products()->orderByDesc('id')->paginate(5);
-        return view('admin.products.index',compact('product_arrey'));
+        //$product_array = Product::all();
+        //$product_array = Product::orderByDesc('id')->paginate(5);
+        $product_array = Auth::user()->products()->orderByDesc('id')->paginate(5);
+        return view('admin.products.index',compact('product_array'));
     }
 
     /**

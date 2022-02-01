@@ -17,8 +17,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category_arrey = Category::orderByDesc('id')->paginate(20);
-        return view('admin.categories.index',compact('category_arrey'));
+        $category_array = Category::orderByDesc('id')->paginate(20);
+        return view('admin.categories.index',compact('category_array'));
     }
 
     /**

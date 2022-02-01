@@ -33,7 +33,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($product_arrey as $item)
+                    @forelse ($product_array as $item)
                     <tr>
                         <td scope="row">{{$item->id}}</td>
                         <td><img width='100' src="{{$item->image}}" alt=""></td>
@@ -81,7 +81,7 @@
                     @endforelse
                 </tbody>
             </table>
-            {{$product_arrey->links()}}
+            {{$product_array->links()}}
         </div>
     </div>
 </div>

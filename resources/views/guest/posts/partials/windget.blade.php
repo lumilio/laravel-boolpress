@@ -3,7 +3,7 @@
         <ul style='list-style:none;'>
             <h3>Categories</h3>
             <li><a style='color:white;' href="{{route('guest.posts.index')}}">All</a></li>
-            @forelse ($category_arrey as $item)
+            @forelse ($category_array as $item)
             <li>
                 <a style='color:white;' href="{{route('guest.categories.post', $item->slug)}}">{{$item->name}}</a>
                 <span class="badge bg-primary">{{$item->posts()->count()}}</span>
@@ -16,7 +16,7 @@
         <ul class='mt-5' style='list-style:none;'>
         <h3>Tags</h3>
             <li><a style='color:white;' href="{{route('guest.posts.index')}}">All</a></li>
-            @forelse ($tag_arrey as $item1)
+            @forelse ($tag_array as $item1)
             <li>
                 <a style='color:white;' href="{{route('guest.tags.post', $item1->slug)}}">{{$item1->name}}</a>
                 <span class="badge bg-primary">{{$item1->posts()->count()}}</span>

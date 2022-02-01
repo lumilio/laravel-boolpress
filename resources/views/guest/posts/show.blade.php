@@ -7,6 +7,8 @@
             <img class='mb-2'src="{{$post->cover}}" alt="">
             <h4>post scritto da utente n.{{$post->id}}</h4>
             <p>{{$post->description}}</p>
+
+
             @if($post->category != null)
             <p>categoria : <a href="{{route('guest.categories.post', $post->category->slug)}}">{{$post->category->name}}</a></p>
             @else
@@ -14,30 +16,13 @@
             @endif
 
 
-
-
-
-
-
-
-
-
-
-
-
-            @foreach ($tag_arrey as $item1)
-            @if(in_array($item1,$choose_tag))
-
-            <a style='color:white;' href="{{route('guest.tags.post', $item1->slug)}}">{{$item1->name}}</a>
-
-            @else
-            <p>nessun tag assegnato</p>
-            @endif
-            @endforeach
-
-
-
-
+            <p> tags :
+            @forelse ($choose_tag as $item)
+            <a href="{{route('guest.tags.post', $item->slug)}}">{{$item->name}}</a>--
+            @empty
+                no data
+            @endforelse 
+            </p>
 
 
             @auth  <!-- è possibile autenticarsi da qui? -->

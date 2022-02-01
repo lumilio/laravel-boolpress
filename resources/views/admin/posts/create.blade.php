@@ -50,7 +50,7 @@
                     <label for="category_id">Categories</label>
                     <select class="form-control" name="category_id" id="category_id">
                         <option selected disabled>Select a category</option>
-                        @foreach($arrey_category as $item)
+                        @foreach($array_category as $item)
                         <option value="{{$item->id}}">{{$item->name}}</option>
                         @endforeach
                     </select>

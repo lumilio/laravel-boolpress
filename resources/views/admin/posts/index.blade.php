@@ -31,7 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($post_arrey as $item)
+                    @forelse ($post_array as $item)
                     <tr>
                         <td scope="row">{{$item->id}}</td>
                         <td>{{$item->description}}</td>
@@ -78,7 +78,7 @@
                     @endforelse
                 </tbody>
             </table>
-            {{$post_arrey->links()}}
+            {{$post_array->links()}}
         </div>
     </div>
 </div>

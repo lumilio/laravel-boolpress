@@ -3,7 +3,7 @@
 @section('content')
 <div class=" container-fluid d-flex justify-content-center">
     <div class="container d-flex flex-wrap">
-        @forelse ($product_arrey as $item)
+        @forelse ($product_array as $item)
         <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="{{$item->image}}" alt="Card image cap">
             <div class="card-body">
@@ -18,6 +18,6 @@
     </div>
 </div>
 <div class="container-fluid d-flex justify-content-center">
-    {{$product_arrey->links()}}
+    {{$product_array->links()}}
 </div>
 @endsection

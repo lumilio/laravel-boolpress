@@ -13,14 +13,14 @@ class TagSeeder extends Seeder
      */
     public function run()
     {
-        $tag_arrey = [
+        $tag_array = [
             'pubblicità',
             'inserzione',
             'per adulti',
             'recente',
         ];
 
-        foreach ($tag_arrey as $item){
+        foreach ($tag_array as $item){
             $_tag = new Tag();
             $_tag->name = $item;
             $_tag->slug = Str::slug($_tag->name);

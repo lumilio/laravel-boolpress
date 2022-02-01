@@ -16,10 +16,10 @@ class TagController extends Controller
      */
     public function index(Tag $tag, Category $category)
     {
-        $category_arrey = Category::all();
-        $tag_arrey = Tag::all();
+        $category_array = Category::all();
+        $tag_array = Tag::all();
         $filtered_posts = $tag->posts()->orderByDesc('id')->paginate(50);
-        //ddd($tag_arrey);
-        return view('guest.tags.posts', compact('filtered_posts','tag','category','tag_arrey','category_arrey'));
+        //ddd($tag_array);
+        return view('guest.tags.posts', compact('filtered_posts','tag','category','tag_array','category_array'));
     }
 }

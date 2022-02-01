@@ -4,7 +4,7 @@
 <div class="container-fluid d-flex justify-content-center">
     @include('guest.posts.partials.windget')
     <div class="container d-flex justify-content-center flex-wrap">
-        @forelse ($post_arrey as $item)
+        @forelse ($post_array as $item)
         <div class="card mb-4" style="width: 50%">
             <div class="card-body">
                 @if($item->category != null)
@@ -22,7 +22,7 @@
     </div>
 </div>
 <div class="container-fluid d-flex justify-content-center">
-    {{$post_arrey->links()}}
+    {{$post_array->links()}}
 </div>
 @endsection
 

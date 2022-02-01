@@ -17,10 +17,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post_arrey  = Post::orderByDesc('id')->paginate(12);
-        $category_arrey = Category::all();
-        $tag_arrey = Tag::all();
-        return view('guest.posts.index',compact('post_arrey','category_arrey','tag_arrey'));
+        $post_array  = Post::orderByDesc('id')->paginate(12);
+        $category_array = Category::all();
+        $tag_array = Tag::all();
+        return view('guest.posts.index',compact('post_array','category_array','tag_array'));
     }
 
     /**
@@ -31,9 +31,10 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        //ddd($post->tags);
+        //ddd($post->category->name);
         $choose_tag = $post->tags;
-        $tag_arrey = Tag::all();
-        return view('guest.posts.show', compact('post','choose_tag','tag_arrey'));
+        return view('guest.posts.show', compact('post','choose_tag'));
     }
 
 

@@ -53,7 +53,7 @@
                     <label for="category_id">Categoria :</label>
                     <select class="form-control" name="category_id" id="category_id">
                         <option value=''>-</option>
-                        @foreach($arrey_category as $item)
+                        @foreach($array_category as $item)
                         <option value="{{$item->id}}" {{$item->id == old('item', $post->category_id) ? 'selected' : ''}}>{{$item->name}}</option>
                         @endforeach
                     </select>

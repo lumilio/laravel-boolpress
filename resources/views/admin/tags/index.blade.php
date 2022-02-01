@@ -62,7 +62,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($tag_arrey as $item)
+                    @forelse ($tag_array as $item)
                     <tr>
                         <td scope="row">{{$item->id}}</td>
 
@@ -141,7 +141,7 @@
                     @endforelse
                 </tbody>
             </table>
-            {{$tag_arrey->links()}}
+            {{$tag_array->links()}}
         </div>
     </div>
 </div>

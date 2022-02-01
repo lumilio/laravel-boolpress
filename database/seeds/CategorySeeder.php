@@ -13,7 +13,7 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $category_arrey = [
+        $category_array = [
             'Attulità',
             'Intrattenimento',
             'Sport',
@@ -21,7 +21,7 @@ class CategorySeeder extends Seeder
             'Documentari',
         ];
 
-        foreach ($category_arrey as $item){
+        foreach ($category_array as $item){
             $_cat = new Category();
             $_cat->name = $item;
             $_cat->slug = Str::slug($_cat->name);

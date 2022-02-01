@@ -22,9 +22,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //$post_arrey = Post::orderByDesc('id')->paginate(5);
-        $post_arrey = Auth::user()->posts()->orderByDesc('id')->paginate(5);
-        return view('admin.posts.index',compact('post_arrey'));
+        //$post_array = Post::orderByDesc('id')->paginate(5);
+        $post_array = Auth::user()->posts()->orderByDesc('id')->paginate(5);
+        return view('admin.posts.index',compact('post_array'));
     }
 
 
@@ -37,9 +37,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        $arrey_category = Category::all();
+        $array_category = Category::all();
         $tags = Tag::all();
-        return view('admin.posts.create', compact('arrey_category','tags'));
+        return view('admin.posts.create', compact('array_category','tags'));
     }
 
 
@@ -102,11 +102,11 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        $arrey_category = Category::all();
+        $array_category = Category::all();
         $tags = Tag::all();
 
         if(Auth::id()===$post->user_id) {
-            return view('admin.posts.edit', compact('post','arrey_category','tags'));
+            return view('admin.posts.edit', compact('post','array_category','tags'));
         } else {
             abort(403);
         }

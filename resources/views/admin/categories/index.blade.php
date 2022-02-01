@@ -62,7 +62,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($category_arrey as $item)
+                    @forelse ($category_array as $item)
                     <tr>
                         <td scope="row">{{$item->id}}</td>
 
@@ -141,7 +141,7 @@
                     @endforelse
                 </tbody>
             </table>
-            {{$category_arrey->links()}}
+            {{$category_array->links()}}
         </div>
     </div>
 </div>
