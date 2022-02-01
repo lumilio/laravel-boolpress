@@ -5,17 +5,7 @@
     @include('guest.posts.partials.windget')
     <div class="container d-flex justify-content-center flex-wrap">
         @forelse ($post_array as $item)
-        <div class="card mb-4" style="width: 50%">
-            <div class="card-body">
-                @if($item->category != null)
-                <span class="badge bg-primary">{{$item->category->name}}</span>
-                @else
-                @endif
-                <p class="card-text">{{$item->description}}€</p>
-                <a href="{{route('guest.posts.show', $item->slug)}}" class="btn btn-primary">Vedi</a>
-            </div>
-            <img class="card-img-top" src="{{$item->cover}}" alt="Card image cap">
-        </div>
+        @include('guest.posts.partials.card')
         @empty
             <p>no data</p>
         @endforelse 
