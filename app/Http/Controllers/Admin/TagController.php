@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 class TagController extends Controller
 {
@@ -93,6 +95,6 @@ class TagController extends Controller
     public function destroy(Tag $tag)
     {
         $tag->delete();
-        return redirect()->route('admin.tags.index')->with('message3', "La Categoria n.{$tag->id} è stata eliminata");
+        return redirect()->route('admin.tags.index')->with('message3', "Il n.{$tag->id} è stata eliminata");
     }
 }

@@ -37,7 +37,7 @@
                                             Dai un nome alla nuova TAG
                         </div>
 
-                        <form class="mx-2" method='post' action="{{route('admin.categories.store')}}">
+                        <form class="mx-2" method='post' action="{{route('admin.tags.store')}}">
                         @csrf 
                             <input type="text" name='name' id='name' class='form-control' value="">
                             <div class="container-fluid d-flex justify-content-end">
@@ -84,7 +84,7 @@
                                             Rinomina la TAG "{{$item->name}}" id: n.{{$item->id}}
                                         </div>
 
-                                        <form class="mx-2" method='post' action="{{route('admin.categories.update', $item->slug)}}">
+                                        <form class="mx-2" method='post' action="{{route('admin.tags.update', $item->slug)}}">
                                         @csrf 
                                         @method('PUT')
                                             <input type="text" name='name' id='name' class='form-control' value="{{$item->name}}">
@@ -100,7 +100,7 @@
 <!----------->
                         <td>
                             <span class="badge bg-primary">{{$item->posts()->count()}}</span>
-                               <a class='mx-2' href="{{route('guest.categories.post', $item->slug)}}">
+                               <a class='mx-2' href="{{route('guest.tags.post', $item->slug)}}">
                                    <i class="far fa-eye mx-2"></i>
                                 </a>    
                             </td>
@@ -124,7 +124,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                                            <form class="mx-2" method='post' action="{{route('admin.categories.destroy', $item->slug)}}">
+                                            <form class="mx-2" method='post' action="{{route('admin.tags.destroy', $item->slug)}}">
                                                 @csrf 
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Do it!</i></button>
