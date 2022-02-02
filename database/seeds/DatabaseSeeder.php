@@ -14,6 +14,11 @@ class DatabaseSeeder extends Seeder
         $this->call(
             ProductSeeder::class,
             PostSeeder::class,
+            CategorySeeder::class,
+            TagSeeder::class,
+
+
+            /* serve per seeddare tutto insieme */
         );
     }
 }

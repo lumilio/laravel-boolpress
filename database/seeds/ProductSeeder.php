@@ -17,7 +17,7 @@ class ProductSeeder extends Seeder
         for ($i=0; $i < 10; $i++) { 
             $prod = new Product();
             $prod->name = $faker->sentence();
-            $prod->image = $faker->imageUrl(600, 400, 'Products');
+            $prod->image = 'faker_store_images/'. $faker->image('public/storage/faker_store_images',600, 400, 'Products',true);
             $prod->price = $faker->randomFloat(2, 100, 300);
             $prod->quantity = $faker->numberBetween(1, 100);
             $prod->description = $faker->text();

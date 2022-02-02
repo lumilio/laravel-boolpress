@@ -13,11 +13,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Product $product)
     {
         /* return view('guest.products.index',['products'=>Product::all()]); */
         $product_array = Product::orderByDesc('id')->paginate(12);
-        return view('guest.products.index',compact('product_array'));
+        return view('guest.products.index',compact('product_array','product'));
     }
 
     /**

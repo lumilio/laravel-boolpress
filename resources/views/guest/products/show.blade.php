@@ -4,7 +4,7 @@
 <div class=" container-fluid d-flex justify-content-center">
     <div class="container d-flex">
         <div class='me-2'>
-            <img class='mb-2'src="{{$product->image}}" alt="">
+            <img class='mb-2'src="{{asset('storage/' . $product->image )}}" alt="">
             <span >Disponibilità : {{$product->quantity}} pz</span>
         </div>
         <div>

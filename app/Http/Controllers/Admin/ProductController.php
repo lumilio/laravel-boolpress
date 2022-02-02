@@ -8,6 +8,7 @@ use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -16,13 +17,13 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Product $product)
     {
         /* return view('guest.products.index',['products'=>Product::all()]); */
         //$product_array = Product::all();
         //$product_array = Product::orderByDesc('id')->paginate(5);
         $product_array = Auth::user()->products()->orderByDesc('id')->paginate(5);
-        return view('admin.products.index',compact('product_array'));
+        return view('admin.products.index',compact('product_array','product'));
     }
 
     /**
@@ -30,9 +31,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Product $product)
     {
-        return view('admin.products.create');
+        return view('admin.products.create',compact('product'));
     }
 
     /**
@@ -45,13 +46,18 @@ class ProductController extends Controller
     {
         //ddd($request->all());
         //validazione
+        //ddd($cover_path,$validated);
         $validated = $request->validate([
             'name'=>['required','unique:products'],
-            'image'=>'nullable',
+            'image'=>['nullable', 'image', 'max:1000',],
             'price'=> 'nullable',
             'quantity'=> 'nullable',
             'description'=> 'nullable',
         ]);
+        if ($request->file('image')) {
+            $cover_path = Storage::put('products_store_images', $request->file('image'));
+            $validated['image']= $cover_path ;
+        }
         $validated['slug']= Str::slug($validated['name']);
         $validated['user_id']= Auth::id();
         Product::create($validated);
@@ -97,11 +103,16 @@ class ProductController extends Controller
         if(Auth::id()===$product->user_id){
             $validated = $request->validate([
                 'name'=>['required', Rule::unique('products')->ignore($product->id)],
-                'image'=>'nullable',
+                'image'=>['nullable', 'image', 'max:1000',],
                 'price'=> 'nullable',
                 'quantity'=> 'nullable',
                 'description'=> 'nullable',
             ]);
+            if ($request->file('image')) {
+                Storage::delete($product->image);
+                $cover_path = Storage::put('products_store_images', $request->file('image'));
+                $validated['image']= $cover_path ;
+            }
             $validated['slug']= Str::slug($validated['name']);
             $product->update($validated);
             return redirect()->route('admin.products.index')->with('message2', "Il Prodotto n.{$product->id} è stato modificato");

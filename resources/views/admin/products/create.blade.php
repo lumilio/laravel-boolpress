@@ -6,7 +6,7 @@
         <div>
             <h1>create a new product</h1>
             @include('admin.products.partials.errorCreate')
-            <form action="{{route('admin.products.store')}}" method="post">
+            <form action="{{route('admin.products.store')}}" method="post" enctype="multipart/form-data">
             @csrf
                 <div class='mb-3'>
                     <label for="name" class="form-label">Name</label>
@@ -16,14 +16,16 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+
+<!-- --------------------------- form inserimento file -->
                 <div class='mb-3'>
-                    <label for="image" class="form-label">Image</label>
-                    <input type="text" name='image' id='image' class='form-control' placeholder='http://' aria-describedby='imageHelper' value="{{old('image')}}">
-                    <small id="imageHelper" class="text-muted">insert image</small>
+                    <input style='width:300px;' type="file" name='image' id='image' class='form-control' placeholder='image' accept='.jpg,.png'>
                     @error('image')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+<!-- ------------------------------------------------>
+
                 <div class='mb-3'>
                     <label for="price" class="form-label">price</label>
                     <input type="number" setp='0.01' name='price' id='price' class='form-control' aria-describedby='priceHelper' value="{{old('price')}}">

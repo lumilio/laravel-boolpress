@@ -6,7 +6,7 @@
         <div>
             <h1>edit product</h1>
             @include('admin.products.partials.errorCreate')
-            <form action="{{route('admin.products.update', $product->slug)}}" method="post">
+            <form action="{{route('admin.products.update', $product->slug)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
                 <div class='mb-3'>
@@ -17,14 +17,20 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class='mb-3'>
-                    <label for="image" class="form-label">Image</label>
-                    <input type="text" name='image' id='image' class='form-control' placeholder='http://' aria-describedby='imageHelper' value="{{$product->image}}">
-                    <small id="imageHelper" class="text-muted">insert image</small>
+
+<!-- --------------------------- form inserimento file -->
+                <div class='my-5'>
+                    <div class="ms-5 d-flex align-items-center container-fluid">
+                        <img style='width:200px;' src="{{asset('storage/' . $product->image )}}" alt="">
+                        <input class="ms-5" style='width:300px;' type="file" name='image' id='image'  placeholder='image' accept='.jpg,.png'>
+                    </div>
                     @error('image')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+<!-- ------------------------------------------------------>
+
+
                 <div class='mb-3'>
                     <label for="price" class="form-label">price</label>
                     <input type="number" setp='0.01' name='price' id='price' class='form-control' aria-describedby='priceHelper' value="{{$product->price}}">

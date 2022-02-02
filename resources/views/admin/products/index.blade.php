@@ -36,7 +36,7 @@
                     @forelse ($product_array as $item)
                     <tr>
                         <td scope="row">{{$item->id}}</td>
-                        <td><img width='100' src="{{$item->image}}" alt=""></td>
+                        <td><img width='100' src="{{asset('storage/' . $item->image )}}" alt=""></td>
                         <td>{{$item->name}}</td>
                         <td>{{$item->price}}</td>
                         <td>{{$item->quantity}}</td>
