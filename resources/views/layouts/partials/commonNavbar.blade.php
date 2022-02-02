@@ -3,7 +3,7 @@
         <a class="me-3" href="{{ url('/') }}"><i style='font-size:30px;' class="fas fa-home"></i></a>
         <a class="text-black me-3" href="{{route('guest.products.index')}}">Products</a>
         <a class="text-black me-3" href="{{route('guest.posts.index')}}">Blog</a>
-        <a class="text-black me-3" href="">About us</a>
+        <a class="text-black me-3" href="">Contact Us</a>    <!-- start mailable -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- left Side Of Navbar -->
             <ul class="navbar-nav d-flex ms-auto">
