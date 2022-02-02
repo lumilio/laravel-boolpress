@@ -9,21 +9,24 @@
             <p>{{$post->description}}</p>
 
 
+<!---------------------- Badge categoria e tags assegnati -->
+            <p> categoria :
             @if($post->category != null)
-            <p>categoria : <a href="{{route('guest.categories.post', $post->category->slug)}}">{{$post->category->name}}</a></p>
+            <span class="badge bg-light"><a href="{{route('guest.categories.post', $post->category->slug)}}">{{$post->category->name}}</a></span>
             @else
-            <p>categoria : non specificata</p>
+            non specificata
             @endif
+            </p>
 
 
             <p> tags :
             @forelse ($choose_tag as $item)
-            <a href="{{route('guest.tags.post', $item->slug)}}">{{$item->name}}</a>--
+            <span class="badge text-black bg-warning"><a href="{{route('guest.tags.post', $item->slug)}}">{{$item->name}}</a></span>
             @empty
                 no data
             @endforelse 
             </p>
-
+<!------------------------------------->
 
             @auth  <!-- è possibile autenticarsi da qui? -->
             <a href="{{route('admin.posts.edit', $post->slug)}}">modifica</a>
