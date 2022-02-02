@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
-use App\Models\Mail;
+use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MarkDown;
 
 class MailController extends Controller
 {
@@ -15,18 +17,9 @@ class MailController extends Controller
      */
     public function index()
     {
-        //
+        return view('guest.mails.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -36,7 +29,18 @@ class MailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        //ddd($request->all());
+        $validated = $request->validate([
+            'name'=>'required|min:4|max:50',
+            'e-mail' => 'required|email',
+            'content' => 'required|min:5|max:1000',
+        ]);
+ 
+        $mail = Message::create($validated);
+        $to = 'admin@example.com';
+        Mail::to($to)->send(new MarkDown($mail));
+        return redirect()->route('guest.contact.us')->with('message', 'Thanks for your message we will reply asap');
     }
 
     /**
