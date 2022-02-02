@@ -24,6 +24,8 @@ Route::namespace('Guest')->prefix('guest')->name('guest.')->group(function(){
     Route::resource('posts','PostController')->only(['index','show']);       
     Route::get('categories/{category:slug}/posts', 'CategoryController@index')->name('categories.post');
     Route::get('tags/{tag:slug}/posts', 'TagController@index')->name('tags.post');
+    
+    Route::get('tags/{tag:slug}/posts', 'TagController@index')->name('tags.post');
 });
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('auth')->group(function(){
