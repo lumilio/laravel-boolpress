@@ -34,7 +34,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('auth')->
     Route::resource('posts','PostController');       
     Route::resource('categories','CategoryController');        
     Route::resource('tags','TagController'); 
-    Route::resource('inbox','MessageController');        
+    Route::resource('inbox','MessageController')->parameter('inbox', 'message:id');;        
 });
 
 

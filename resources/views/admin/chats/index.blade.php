@@ -17,7 +17,6 @@
                 {{ session('message3') }}
             </div>
             @endif
-            <a href="{{route('admin.posts.create')}}"><button style='position:absolute; right:0;' class='mb-2 mt-4 float-end"'><i class="fas fa-plus"></i> Crea Post</button></a>
         </div>        
         <div class="card">
             <div class="card-header">{{ __('Dashboard') }}</div>
@@ -25,9 +24,8 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Cover</th>
-                        <th>Actions</th>
-                        <th width="70%">Content</th>
+                        <th>Contact</th>
+                        <th>Name</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,11 +34,10 @@
                         <td scope="row">{{$item->id}}</td>
                         <td>{{$item['e-mail']}}</td>
                         <td>{{$item['name']}}</td>
-                        <td>{{$item['content']}}</td>
                         <td></td>
 
                         <td>
-                            <a href=""><i class="far fa-eye mx-2"></i></a>
+                            <a href="{{route('admin.inbox.show', $item->id)}}"><i class="far fa-eye mx-2"></i></a>
 
 
 
@@ -52,7 +49,7 @@
                     @endforelse
                 </tbody>
             </table>
-            {{$post_array->links()}}
+            {{$message_array->links()}}
         </div>
     </div>
 </div>
