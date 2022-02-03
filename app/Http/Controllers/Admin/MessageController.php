@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Models\Message;
+use App\Models\Answer;
+use App\Mail\MarkDownRisposta;
 
 class MessageController extends Controller
 {
@@ -37,7 +40,17 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        //ddd($request->all());
+        $validated = $request->validate([
+            'e-mail-user' => 'required|email',
+            'content-answer' => 'required|min:5|max:1000',
+        ]);
+ 
+        $mail = Answer::create($validated);
+        $to = $validated['e-mail-user'];
+        Mail::to($to)->send(new MarkDownRisposta($mail));
+        return redirect()->route('admin.inbox.index')->with('message', 'hai risposto all utente');
     }
 
     /**

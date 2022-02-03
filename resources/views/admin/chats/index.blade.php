@@ -4,9 +4,9 @@
 <div class="container">
     <div class="">
         <div style='position:relative; height:4rem;' class="container-fluid d-flex align-items-right">
-            @if (session('message1'))
+            @if (session('message'))
             <div class="mt-2 alert alert-success">
-                {{ session('message1') }}
+                {{ session('message') }}
             </div>
             @elseif (session('message2'))
             <div class="mt-2 alert alert-warning">
@@ -38,10 +38,6 @@
 
                         <td>
                             <a href="{{route('admin.inbox.show', $item->id)}}"><i class="far fa-eye mx-2"></i></a>
-
-
-
-         
                         </td>
                     </tr>
                     @empty
