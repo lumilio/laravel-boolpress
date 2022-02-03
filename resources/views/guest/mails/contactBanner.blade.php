@@ -1,10 +1,11 @@
 @component('mail::message')
-# Introduction
+# Lead messsage
 
 
 
 
 <p>From: {{ $email }} - {{ $name }}</p>
+<p>{{$typo}}</p>
 <p>Message: {{ $content }}</p>
 
 

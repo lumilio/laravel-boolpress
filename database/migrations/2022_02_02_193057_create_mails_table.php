@@ -17,6 +17,7 @@ class CreateMailsTable extends Migration
             $table->id();
             $table->string('e-mail');
             $table->string('name');
+            $table->string('typo');
             $table->text('content');
             $table->timestamps();
         });

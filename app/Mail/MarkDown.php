@@ -33,6 +33,7 @@ class MarkDown extends Mailable
             'name' => $this->message->name,
             'content' => $this->message->content,
             'email' => $this->message['e-mail'],
+            'typo' => $this->message['typo'],
         ]);
     }
 }

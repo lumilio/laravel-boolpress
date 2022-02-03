@@ -35,9 +35,9 @@
                     @enderror
                 </div>
             </div>
-            <label for="cars">Tipo:</label>
-            <select class='mb-3' name="cars" id="cars" form="carform">
-                <option value="Preventivo">Preventivo</option>
+            <label for="typo">Tipo:</label>
+            <select class='mb-3' name="typo" id="typo">
+                <option selected="selected" value="Preventivo">Preventivo</option>
                 <option value="Consulenza">Consulenza</option>
                 <option value="Assistenza">Assistenza</option>
                 <option value="altro">altro</option>

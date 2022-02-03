@@ -35,6 +35,7 @@ class MailController extends Controller
             'name'=>'required|min:4|max:50',
             'e-mail' => 'required|email',
             'content' => 'required|min:5|max:1000',
+            'typo' => 'required',
         ]);
  
         $mail = Message::create($validated);
