@@ -96,6 +96,7 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
-        //
+        $message->delete();
+        return redirect()->route('admin.inbox.index')->with('message3', "Il messaggio n.{$message->id} è stato eliminato");
     }
 }

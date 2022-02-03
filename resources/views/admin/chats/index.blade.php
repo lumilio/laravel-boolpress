@@ -26,6 +26,7 @@
                         <th>ID</th>
                         <th>Contact</th>
                         <th>Name</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,10 +35,13 @@
                         <td scope="row">{{$item->id}}</td>
                         <td>{{$item['e-mail']}}</td>
                         <td>{{$item['name']}}</td>
-                        <td></td>
-
-                        <td>
+                        <td class='d-flex'>
                             <a href="{{route('admin.inbox.show', $item->id)}}"><i class="far fa-eye mx-2"></i></a>
+                            <form class="mx-2" method='post' action="{{route('admin.inbox.destroy', $item->id)}}">
+                                @csrf 
+                                @method('DELETE')
+                                <button class='bg-white p-0' style='border:none;' type="submit" ><i type="submit" class="far text-danger fa-trash-alt mx-2"></i></button>
+                            </form> 
                         </td>
                     </tr>
                     @empty
