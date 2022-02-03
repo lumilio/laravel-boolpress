@@ -2,14 +2,14 @@
 # Introduction
 
 
-The body of your message.
-Message: {{ $content }}
-From: {{ $name }}
-Email: {{ $email }}
-The body of your message.
 
-@component('mail::button', ['url' => ''])
-Button Text
+
+<p>From: {{ $email }} - {{ $name }}</p>
+<p>Message: {{ $content }}</p>
+
+
+@component('mail::button', ['url' => 'http://localhost:8000/'])
+Vai al sito
 @endcomponent
 
 Thanks,<br>
