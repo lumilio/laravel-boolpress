@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Product;
+use App\User;
+use App\Mail\MarkDownNotifica;
 
 class ProductController extends Controller
 {
@@ -43,7 +45,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Product $product)
+    public function store(Request $request, Product $product, User $user)
     {
         //ddd($request->all());
         //validazione
@@ -62,6 +64,8 @@ class ProductController extends Controller
         $validated['slug']= Str::slug($validated['name']);
         $validated['user_id']= Auth::id();
         Product::create($validated);
+        $to = 'admin@example.com';
+        Mail::to($to)->send(new MarkDownNotifica($product));
         return redirect()->route('admin.products.index')->with('message1', "un nuovo prodotto è stato creato");
     }
 

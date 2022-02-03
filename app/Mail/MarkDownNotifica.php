@@ -6,20 +6,21 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\Message;
+use App\Models\Product;
 
-class MarkDown extends Mailable
+
+class MarkDownNotifica extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
-     * Create a new message instance.
+     * Create a new Product instance.
      *
      * @return void
      */
-    public function __construct(Message $message)
+    public function __construct(Product $product)
     {
-        $this->message = $message;
+        $this->product = $product;
     }
 
     /**
@@ -29,10 +30,9 @@ class MarkDown extends Mailable
      */
     public function build()
     {
-        return $this->from('noreply@example.com')->markdown('guest.mails.contactBanner')->with([
-            'name' => $this->message->name,
-            'content' => $this->message->content,
-            'email' => $this->message['e-mail'],
+        return $this->from('noreply@example.com')->markdown('admin.products.usermessage.contactBanner')->with([
+            'name' => $this->product->name,
+            'user' => $this->product->user_id,
         ]);
     }
 }
