@@ -36,9 +36,10 @@ class MessageController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Answer  $answer
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Answer $answer)
     {
 
         //ddd($request->all());
@@ -50,7 +51,7 @@ class MessageController extends Controller
         $mail = Answer::create($validated);
         $to = $validated['e-mail-user'];
         Mail::to($to)->send(new MarkDownRisposta($mail));
-        return redirect()->route('admin.inbox.index')->with('message', 'hai risposto all utente');
+        return redirect()->route('admin.inbox.index')->with('message', "hai risposto all utente con mail {$to}");
     }
 
     /**
