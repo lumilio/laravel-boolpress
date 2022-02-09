@@ -14,8 +14,8 @@ class AddUserIdToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->nullable()->after('id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('promo_id')->nullable()->after('id');
+            $table->foreign('promo_id')->references('id')->on('promos');
         });
     }
 
@@ -27,8 +27,8 @@ class AddUserIdToProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropForeign('products_user_id_foreign');
-            $table->dropColumn('user_id');
+            $table->dropForeign('items_promo_id_foreign');
+            $table->dropColumn('promo_id');
         });
     }
 }
